@@ -1,4 +1,4 @@
-import * as factory from './factory';
+import * as Factory from './factory';
 
 import * as account from './model/account';
 import * as accountGroup from './model/account-group';
@@ -7,7 +7,7 @@ import * as budget from './model/budget';
 import * as currency from './model/currency';
 import * as transfer from './model/transfer';
 
-const model = {
+const Model = {
   ...account,
   ...accountGroup,
   ...bank,
@@ -17,6 +17,6 @@ const model = {
 }
 
 export {
-  factory,
-  model
+  Factory,
+  Model
 };
