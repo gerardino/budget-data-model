@@ -96,6 +96,7 @@ export function budget(): Budget {
       ]
     },
 
+    id: faker.random.number({min: 1000, max: 9999}),
     name: 'Test',
     from,
     to: end

@@ -6,7 +6,9 @@ export interface Budget {
   banks: Bank[];
   transfers: Transfer[];
   accounts: AccountGroup;
-  
+  basedOn?: Budget;
+
+  id: number;
   name: string;
   from: Date;
   to: Date;
