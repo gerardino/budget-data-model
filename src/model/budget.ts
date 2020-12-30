@@ -3,9 +3,9 @@ import { Transfer } from "./transfer";
 import { AccountGroup } from "./account-group";
 
 export interface Budget {
-  banks: Bank[];
+  banks: Record<string, Bank>;
   transfers: Transfer[];
-  accounts: AccountGroup;
+  accounts: AccountGroup[];
   basedOn?: Budget;
 
   id: number;

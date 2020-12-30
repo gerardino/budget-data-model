@@ -1,12 +1,13 @@
-import { AccountType, Account, AccountState } from "../model/account";
+import { AccountType, Account } from "../model/account";
 import { Bank } from "../model/bank";
+import { OperationState } from "../model/operation";
 
 const faker = require("faker");
 
 export function account(
   type: AccountType,
-  bank: Bank,
-  state?: AccountState
+  { code }: Bank,
+  state?: OperationState
 ): Account {
   return {
     name:
@@ -15,8 +16,9 @@ export function account(
       faker.random.number({ max: 9, min: 2 }),
     type,
     amount: faker.finance.amount(),
-    state: state ?? AccountState.Estimated,
+    state: state ?? OperationState.Estimated,
     date: new Date(),
-    bank,
+    dayOfCycle: faker.random.number(30),
+    bank: code,
   };
 }

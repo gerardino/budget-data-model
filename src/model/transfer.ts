@@ -1,18 +1,13 @@
-import { Bank } from './bank';
+import { Operation } from './operation';
 
-export enum TransferState {
-  Disabled = 'd',
-  Pending = 'p',
-  Estimated = 'e',
-  Executed = 'x'
-}
-
-export interface Transfer {
-  date: Date;
-  from: Bank;
-  to: Bank;
+export interface Transfer extends Operation {
   exchangeRate: number;
-  amountFrom: number;
-  amountTo: number;
-  state: TransferState;
+  // Let's use bank code for the moment
+  // and see how that goes
+  fromBank: string;
+  fromAmount: number;
+  // Let's use bank code for the moment
+  // and see how that goes
+  toBank: string;
+  toAmount: number;
 }

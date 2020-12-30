@@ -1,19 +1,25 @@
-import { Transfer, TransferState } from "../model/transfer";
+import { Transfer } from "../model/transfer";
 import { Bank } from "../model/bank";
-const faker = require('faker');
+import { OperationState } from "../model/operation";
+const faker = require("faker");
 
-export function transfer(from: Bank, to: Bank,
-    state: TransferState = TransferState.Estimated,
-    exchangeRate: number = faker.random.float({max: 10, min: 2})): Transfer {
+export function transfer(
+  fromBank: Bank,
+  toBank: Bank,
+  state = OperationState.Estimated,
+  exchangeRate: number = faker.random.float({ max: 10, min: 2 })
+): Transfer {
   const amount = faker.finance.amount();
-  
+  const date = new Date();
+
   return {
-    date: new Date,
-    from,
-    to,
+    date,
+    dayOfCycle: date.getDay(),
+    fromBank: fromBank.code,
+    toBank: toBank.code,
     exchangeRate,
-    amountFrom: amount,
-    amountTo: amount * exchangeRate,
-    state
+    fromAmount: amount,
+    toAmount: amount * exchangeRate,
+    state,
   };
 }
