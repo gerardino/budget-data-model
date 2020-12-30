@@ -10,4 +10,6 @@ export interface Transfer extends Operation {
   // and see how that goes
   toBank: string;
   toAmount: number;
+
+  notes?: string;
 }

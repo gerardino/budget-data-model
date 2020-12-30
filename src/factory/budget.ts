@@ -3,6 +3,7 @@ import { AccountType, Account } from "../model/account";
 import { AccountGroup } from "../model/account-group";
 import { Bank } from "../model/bank";
 import { Budget } from "../model/budget";
+import { Currency } from "../model/currency";
 import { OperationState } from "../model/operation";
 import { Transfer } from "../model/transfer";
 import { account } from "./account";
@@ -10,13 +11,17 @@ import { transfer } from "./transfer";
 
 const faker = require("faker");
 
-function budgetBanks(numberOfBanks: number): Bank[] {
-  const banks = [];
-  const currencies = [
+function budgetCurrencies(){
+  return [
     currency("Dolar", "$"),
     currency("Quetzal", "Q"),
     currency("Euro", "€"),
   ];
+}
+
+function budgetBanks(numberOfBanks: number): Bank[] {
+  const banks = [];
+  const currencies = budgetCurrencies();
 
   for (let i = 0; i < numberOfBanks; i++) {
     banks.push(bank(currencies[i % currencies.length]));
@@ -71,6 +76,14 @@ function mapBanks(banks: Bank[]): Record<string, Bank> {
   }, {});
 }
 
+function mapCurrencies(currencies: Currency[]): Record<string, Currency> {
+  return currencies.reduce((map: Record<string, Currency>, currency: Currency) => {
+    map[currency.code] = currency;
+    return map;
+  },
+  {});
+}
+
 /**
  * Fabricates a valid budget with random data.
  */
@@ -84,6 +97,7 @@ export function budget(): Budget {
   const banks = budgetBanks(3);
 
   return {
+    currencies: mapCurrencies(budgetCurrencies()),
     banks: mapBanks(banks),
     transfers: budgetTransfers(banks),
     accounts: banks.map(

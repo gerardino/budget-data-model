@@ -1,11 +1,11 @@
 import { Account, AccountType } from "./account";
-import { Currency } from "./currency";
 import { OperationState } from "./operation";
 
 export class AccountGroup {
   constructor(
     public name: string,
-    public currency: Currency,
+    // Changing this to string, let's see how it goes
+    public currency: string,
     public accounts: Account[] = []
   ) {}
 

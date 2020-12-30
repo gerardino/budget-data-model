@@ -8,8 +8,7 @@ export function bank(currency: Currency): Bank {
 
   return {
     amount: faker.finance.amount(),
-    date: new Date(),
-    currency,
+    currency: currency.code,
     code: name.substr(0, 3),
     name,
     description: faker.company.catchPhrase()

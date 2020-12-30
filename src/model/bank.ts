@@ -2,9 +2,9 @@ import { Currency } from "./currency";
 
 export interface Bank {
   amount: number;
-  date: Date;
-  currency: Currency;
+  // Changing to string code, let's see how it goes
+  currency: string;
   code: string;
   name: string;
-  description: string;
+  description?: string;
 }
