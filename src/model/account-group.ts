@@ -1,5 +1,4 @@
 import Account, { AccountType } from './account';
-
 import { OperationState } from './operation';
 
 export default class AccountGroup {

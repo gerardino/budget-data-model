@@ -1,15 +1,16 @@
-import * as account from './model/account';
-import * as accountGroup from './model/account-group';
-import * as bank from './model/bank';
-import * as budget from './model/budget';
-import * as currency from './model/currency';
-import * as transfer from './model/transfer';
+import Account from './model/account';
+import AccountGroup from './model/account-group';
+import Bank from './model/bank';
+import Budget from './model/budget';
+import Currency from './model/currency';
+import Transfer from './model/transfer';
 
-export default {
-  ...account,
-  ...accountGroup,
-  ...bank,
-  ...budget,
-  ...currency,
-  ...transfer,
+export { AccountType } from './model/account';
+export {
+  AccountGroup,
+  Account,
+  Bank,
+  Budget,
+  Currency,
+  Transfer,
 };
