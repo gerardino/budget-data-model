@@ -1,12 +1,13 @@
-import { Account, AccountType } from "./account";
-import { OperationState } from "./operation";
+import Account, { AccountType } from './account';
 
-export class AccountGroup {
+import { OperationState } from './operation';
+
+export default class AccountGroup {
   constructor(
     public name: string,
     // Changing this to string, let's see how it goes
     public currency: string,
-    public accounts: Account[] = []
+    public accounts: Account[] = [],
   ) {}
 
   /**
@@ -17,11 +18,12 @@ export class AccountGroup {
    * @returns {number}
    */
   getTotal(type?: AccountType, state?: OperationState): number {
-    return this.accounts.reduce((total: number, a: Account): number => {
-      return (type === null || type === a.type) &&
-        (state === null || state === a.state)
+    return this.accounts.reduce(
+      (total: number, a: Account): number => ((type === null || type === a.type)
+        && (state === null || state === a.state)
         ? total + (a.type === AccountType.Asset ? a.amount : -a.amount)
-        : total;
-    }, 0);
+        : total),
+      0,
+    );
   }
 }

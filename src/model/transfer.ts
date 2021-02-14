@@ -1,6 +1,6 @@
-import { Operation } from './operation';
+import Operation from './operation';
 
-export interface Transfer extends Operation {
+export default interface Transfer extends Operation {
   exchangeRate: number;
   // Let's use bank code for the moment
   // and see how that goes

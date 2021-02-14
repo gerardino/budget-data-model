@@ -1,12 +1,11 @@
-import { Bank } from './bank';
-import { Operation } from './operation';
+import Operation from './operation';
 
 export enum AccountType {
-  Asset = 'a',     // activo
-  Liability = 'p'  // pasivo
+  Asset = 'a', // activo
+  Liability = 'p' // pasivo
 }
 
-export interface Account extends Operation {
+export default interface Account extends Operation {
   name: string;
   type: AccountType;
   // Let's use bank code for the moment

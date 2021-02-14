@@ -1,21 +1,22 @@
-import { bank, currency } from ".";
-import { AccountType, Account } from "../model/account";
-import { AccountGroup } from "../model/account-group";
-import { Bank } from "../model/bank";
-import { Budget } from "../model/budget";
-import { Currency } from "../model/currency";
-import { OperationState } from "../model/operation";
-import { Transfer } from "../model/transfer";
-import { account } from "./account";
-import { transfer } from "./transfer";
+import { bank, currency } from '.';
+import { AccountType } from '../model/account';
+import Account from '../model/account';
+import AccountGroup from '../model/account-group';
+import Bank from '../model/bank';
+import Budget from '../model/budget';
+import Currency from '../model/currency';
+import { OperationState } from '../model/operation';
+import Transfer from '../model/transfer';
+import { account } from './account';
+import { transfer } from './transfer';
 
-const faker = require("faker");
+import faker from 'faker';
 
-function budgetCurrencies(){
+function budgetCurrencies() {
   return [
-    currency("Dolar", "$"),
-    currency("Quetzal", "Q"),
-    currency("Euro", "€"),
+    currency('Dolar', '$'),
+    currency('Quetzal', 'Q'),
+    currency('Euro', '€'),
   ];
 }
 
@@ -101,16 +102,15 @@ export function budget(): Budget {
     banks: mapBanks(banks),
     transfers: budgetTransfers(banks),
     accounts: banks.map(
-      (b) =>
-        new AccountGroup(
-          `Special expenses #${faker.random.number(100)}`,
-          b.currency,
-          budgetAccounts([b])
-        )
+      (b) => new AccountGroup(
+        `Special expenses #${faker.random.number(100)}`,
+        b.currency,
+        budgetAccounts([b]),
+      ),
     ),
 
     id: faker.random.number({ min: 1000, max: 9999 }),
-    name: "Test Budget",
+    name: `Test Budget ${faker.random.number(100)}`,
     from,
     to: end,
   };

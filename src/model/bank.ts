@@ -1,6 +1,4 @@
-import { Currency } from "./currency";
-
-export interface Bank {
+export default interface Bank {
   amount: number;
   // Changing to string code, let's see how it goes
   currency: string;

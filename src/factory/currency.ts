@@ -1,11 +1,11 @@
-import { Currency } from "../model/currency";
+import Currency from '../model/currency';
 
 export function currency(name: string, symbol?: string, code?: string): Currency {
   if (!symbol) {
     symbol = name.substr(0);
   }
 
-  if (!code){
+  if (!code) {
     code = name.substr(0, 3);
   }
 

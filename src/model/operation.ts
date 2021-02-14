@@ -6,7 +6,7 @@ export enum OperationState {
   Executed = 'x'
 }
 
-export interface Operation {
+export default interface Operation {
   dayOfCycle: number;
   date?: Date;
   state: OperationState;
